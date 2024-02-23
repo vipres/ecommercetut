@@ -22,11 +22,32 @@
       <a href="#" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if (session('error_message'))
+
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error</strong>
+    {{ session('error_message') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+</div>
+@endif
+
+
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="#" method="post">
+      <form action="{{ route('admin.login') }}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input name="email" type="email" class="form-control" placeholder="Email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +55,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input name="password" type="password" class="form-control" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
