@@ -56,5 +56,7 @@
 <script src="{{asset('admin/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin/js/pages/dashboard2.js')}}"></script>
+<!-- Custom Scripts -->
+<script src="{{ asset('admin/js/custom.js') }}"></script>
 </body>
 </html>
