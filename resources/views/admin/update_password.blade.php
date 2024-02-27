@@ -32,6 +32,29 @@
                       <h3 class="card-title">Update Password</h3>
                     </div>
                     <!-- /.card-header -->
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    @if (session('error_message'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error</strong>
+                        {{ session('error_message') }}
+
+                    </div>
+                    @endif
+                    @if (session('success_message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Done</strong>
+                        {{ session('success_message') }}
+
+                    </div>
+                    @endif
                     <!-- form start -->
                     <form method="post" action="{{ route('admin.update-password') }}" >
                         @csrf
@@ -42,15 +65,16 @@
                         </div>
                         <div class="form-group">
                           <label for="current_password">Current Password</label>
-                          <input type="password" class="form-control" id="currrent_password" name="current_password" placeholder="Current Password">
+                          <input type="password" class="form-control" id="current_password" name="current_password" placeholder="Current Password" required>
+                          <span id="verifyCurrentPassword"></span>
                         </div>
                         <div class="form-group">
                             <label for="new_password">New Password</label>
-                            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="New Password">
+                            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="New Password" required>
                         </div>
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
                         </div>
                       </div>
                       <!-- /.card-body -->

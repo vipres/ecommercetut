@@ -6,11 +6,12 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard</a>
+            <a href="#" class="nav-link">Welcome <strong> {{ Auth::guard('admin')->user()->name }} ({{ Auth::guard('admin')->user()->type }})</strong> </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard</a>
         </li>
+
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('admin.logout') }}" class="nav-link">Logout</a>
         </li>
